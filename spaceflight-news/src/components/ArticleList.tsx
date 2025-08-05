@@ -3,7 +3,43 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Spinner, Alert, Button, Form } from 'react-bootstrap';
 import ArticleCard from './ArticleCard';
 import { SpaceflightNewsAPI } from '../services/api';
-import { Article, ArticleListState } from '../types/api';
+// Interfacce per il componente ArticleList
+interface Author {
+  name: string;
+  socials: string | null;
+}
+
+interface Launch {
+  launch_id: string;
+  provider: string;
+}
+
+interface Event {
+  event_id: string;
+  provider: string;
+}
+
+interface Article {
+  id: number;
+  title: string;
+  authors: Author[];
+  url: string;
+  image_url: string;
+  news_site: string;
+  summary: string;
+  published_at: string;
+  updated_at: string;
+  featured: boolean;
+  launches: Launch[];
+  events: Event[];
+}
+
+// Interfaccia per lo stato del componente ArticleList
+interface ArticleListState {
+  articles: Article[];
+  loading: boolean;
+  error: string | null;
+}
 
 const ArticleList: React.FC = () => {
   // State per gestire articoli, loading e errori

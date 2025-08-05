@@ -2,7 +2,41 @@
 import React from 'react';
 import { Card, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { ArticleCardProps } from '../types/api';
+// Interfacce per il componente ArticleCard
+interface Author {
+  name: string;
+  socials: string | null;
+}
+
+interface Launch {
+  launch_id: string;
+  provider: string;
+}
+
+interface Event {
+  event_id: string;
+  provider: string;
+}
+
+interface Article {
+  id: number;
+  title: string;
+  authors: Author[];
+  url: string;
+  image_url: string;
+  news_site: string;
+  summary: string;
+  published_at: string;
+  updated_at: string;
+  featured: boolean;
+  launches: Launch[];
+  events: Event[];
+}
+
+// Interfaccia per le props del componente ArticleCard
+interface ArticleCardProps {
+  article: Article;
+}
 
 // Funzione per formattare la data
 const formatDate = (dateString: string): string => {

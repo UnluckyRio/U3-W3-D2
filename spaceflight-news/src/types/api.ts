@@ -41,27 +41,3 @@ export interface ArticlesResponse {
   previous: string | null;
   results: Article[];
 }
-
-// Interfaccia per le props del componente ArticleCard
-export interface ArticleCardProps {
-  article: Article;
-}
-
-// Interfaccia per le props del componente ArticleDetail
-export interface ArticleDetailProps {
-  articleId: string;
-}
-
-// Interfaccia per lo stato del componente ArticleList
-export interface ArticleListState {
-  articles: Article[];
-  loading: boolean;
-  error: string | null;
-}
-
-// Interfaccia per lo stato del componente ArticleDetail
-export interface ArticleDetailState {
-  article: Article | null;
-  loading: boolean;
-  error: string | null;
-}

@@ -3,7 +3,43 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Row, Col, Spinner, Alert, Button, Badge, Card } from 'react-bootstrap';
 import { SpaceflightNewsAPI } from '../services/api';
-import { Article, ArticleDetailState } from '../types/api';
+// Interfacce per il componente ArticleDetail
+interface Author {
+  name: string;
+  socials: string | null;
+}
+
+interface Launch {
+  launch_id: string;
+  provider: string;
+}
+
+interface Event {
+  event_id: string;
+  provider: string;
+}
+
+interface Article {
+  id: number;
+  title: string;
+  authors: Author[];
+  url: string;
+  image_url: string;
+  news_site: string;
+  summary: string;
+  published_at: string;
+  updated_at: string;
+  featured: boolean;
+  launches: Launch[];
+  events: Event[];
+}
+
+// Interfaccia per lo stato del componente ArticleDetail
+interface ArticleDetailState {
+  article: Article | null;
+  loading: boolean;
+  error: string | null;
+}
 
 // Funzione per formattare la data
 const formatDate = (dateString: string): string => {
